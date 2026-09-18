@@ -1,0 +1,100 @@
+import random
+
+#TRATAR DE GENERAR CLASE DE JUGADOR
+
+class Player():
+    def __init__(self, money, score):
+        self.money = money
+        self.score = score
+        self.didbet = False
+        self.hand = []
+
+    def bet():
+        while True:
+            user_bet = input("Bet  ")
+            if user_bet <= Player().money and user_bet > 0:
+                Player().money <= user_bet
+                Player().didbet = True
+                break
+            else:
+                print("Invalid value")
+
+    def hit():
+        hitted_card = random.choice(deck_of_cards)
+        deck_of_cards.remove(hitted_card)
+        Player().hand.append(hitted_card)
+        Player().calc_score()
+        print("Your hand: ", Player().hand)
+
+    def calc_score():
+        for card in Player.hand:
+            if card == "J" or card == "Q" or card == "K":
+                Player().score += 10
+            elif card == "A":
+                if Player().score < 11:
+                    Player().score += 11
+                else:
+                    Player().score += 1
+            else:
+                Player().score += card
+
+    def stand():
+        pass
+
+class Dealer():
+    def __init__(self, score):
+        self.score = score
+        self.hand = []
+
+    def hit():
+        hitted_card = random.choice(deck_of_cards)
+        deck_of_cards.remove(hitted_card)
+        Dealer().hand.append(hitted_card)
+        Dealer().calc_score
+        print("Dealer hand: ", Dealer().hand)
+
+    def calc_score():
+        for card in Dealer.hand:
+            if card == "J" or card == "Q" or card == "K":
+                Dealer().score += 10
+            elif card == "A":
+                if Dealer().score < 11:
+                    Dealer().score += 11
+                else:
+                    Dealer().score += 1
+            else:
+                Dealer().score += card
+
+    def stand():
+        pass
+
+
+
+    
+cards_suits = ["Diamonds", "Hearts", "Spades", "Clubs"]
+cards_numbers = ["A", 1, 2, 3 , 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"]
+deck_of_cards = []
+
+for number in cards_numbers:
+    for suit in cards_suits:
+        card = (number, suit)
+        deck_of_cards.append(card)
+
+player1 = Player(500, 0)
+dealer1 = Dealer(0)
+
+while True:
+    print("Your score: ", player1.score)
+    print("Dealer score: ", dealer1.score)
+    print("1. Bet | 2. Hit | 3. Stand")
+    choice = input()
+
+    if choice == "1" and player1.didbet == False:
+        player1.bet
+        player1.didbet = True
+    elif choice == "2":
+        player1.hit()
+    elif choice == "3":
+        dealer1.hit()
+    else:
+        print("already bet...")
